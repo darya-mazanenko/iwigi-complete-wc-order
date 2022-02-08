@@ -54,9 +54,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-iwigi-complete-wc-order.ph
  * @since    1.0.0
  */
 function run_iwigi_complete_wc_order() {
-
 	$plugin = new Iwigi_Complete_Wc_Order();
 	$plugin->run();
-
 }
 run_iwigi_complete_wc_order();
