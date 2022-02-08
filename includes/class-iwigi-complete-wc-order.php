@@ -56,7 +56,6 @@ class Iwigi_Complete_Wc_Order
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
-
 	}
 
 	/**
@@ -126,15 +125,13 @@ class Iwigi_Complete_Wc_Order
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
-
 		$plugin_admin = new Iwigi_Complete_Wc_Order_Admin( $this->get_plugin_name(), $this->get_version() );
     
-        $this->loader->add_filter( 'query_vars', $plugin_admin, 'add_custom_query' );
-        $this->loader->add_action( 'woocommerce_email_before_order_table', $plugin_admin, 'link_before_order_table', 10, 4 );
-        $this->loader->add_action( 'woocommerce_order_status_completed', $plugin_admin, 'delete_order_token'  );
+		$this->loader->add_filter( 'query_vars', $plugin_admin, 'add_custom_query' );
+		$this->loader->add_action( 'woocommerce_email_before_order_table', $plugin_admin, 'link_before_order_table', 10, 4 );
+		$this->loader->add_action( 'woocommerce_order_status_completed', $plugin_admin, 'delete_order_token'  );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-
 	}
 
 	/**
@@ -145,11 +142,10 @@ class Iwigi_Complete_Wc_Order
 	 * @access   private
 	 */
 	private function define_public_hooks() {
-
 		$plugin_public = new Iwigi_Complete_Wc_Order_Public( $this->get_plugin_name(), $this->get_version() );
 
-        $this->loader->add_filter( 'page_template', $plugin_public, 'load_page_template');
-        $this->loader->add_filter( 'the_content', $plugin_public, 'display_message_oncomplete' );
+		$this->loader->add_filter( 'page_template', $plugin_public, 'load_page_template');
+		$this->loader->add_filter( 'the_content', $plugin_public, 'display_message_oncomplete' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 	}
