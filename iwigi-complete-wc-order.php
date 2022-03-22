@@ -27,7 +27,7 @@ define( 'IWIGI_COMPLETE_WC_ORDER_VERSION', '1.0.0' );
  */
 function iwigi_woocommerce_active_check() {
     if( ! class_exists( 'WooCommerce' ) ) {
-        add_filter( 'admin_notices', 'iwigi_print_notice' );
+        add_action( 'admin_notices', 'iwigi_print_notice' );
     }
 }
 add_action( 'plugins_loaded', 'iwigi_woocommerce_active_check' );
